@@ -9,11 +9,13 @@ import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 public class TestUtil {
     public WebDriver driver;
     public String appURL, browser;
+    public int implicitWait;
 
     @AfterMethod
     public void tearDown(){
@@ -24,6 +26,7 @@ public class TestUtil {
     public void setupDriverAndOpenTestAddress(){
         readConfig("src/test/resources/config.properties");
         setupWebDriver();
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWait));
         driver.get(appURL);
     }
 
@@ -34,6 +37,7 @@ public class TestUtil {
             properties.load(fileInputStream);
             appURL = properties.getProperty("testURL");
             browser = properties.getProperty("browser");
+            implicitWait = Integer.parseInt(properties.getProperty("implicitWait"));
         }catch (IOException e){
             System.out.println(e);
         }

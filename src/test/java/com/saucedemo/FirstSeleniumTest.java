@@ -4,12 +4,19 @@ import base.TestUtil;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
+import java.util.Collections;
 import java.util.List;
 
 public class FirstSeleniumTest extends TestUtil {
@@ -46,9 +53,17 @@ public class FirstSeleniumTest extends TestUtil {
         WebElement logoutLink = driver.findElement(By.id("logout_sidebar_link"));
 
         //shall never use thread.sleep fo waiting!!!
-        Thread.sleep(1000);
-        Assert.assertTrue(logoutLink.isDisplayed());
+        //Thread.sleep(1000);
+        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait2.until(ExpectedConditions.visibilityOf(logoutLink));
 
+        FluentWait fluentWait = new FluentWait(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoreAll(Collections.singleton(NoSuchElementException.class));
+
+        fluentWait.until(ExpectedConditions.elementToBeClickable(logoutLink));
+        Assert.assertTrue(logoutLink.isDisplayed());
     }
 
     @DataProvider (name = "wrongUsers")
