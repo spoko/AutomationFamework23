@@ -33,6 +33,7 @@ public class ProductTest extends TestUtil {
         Assert.assertEquals(shoppingCartBadge.getText(), "1");
     }
 
+    //trigger the tests
     @DataProvider(name = "items list")
     public Object[][] getItems(){
         return new Object[][]{
