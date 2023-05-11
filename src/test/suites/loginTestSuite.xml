@@ -8,14 +8,5 @@
             <class name="com.saucedemo.FirstSeleniumTest"/>
         </classes>
     </test>
-    <test name="LoginSuite POM">
-        <classes>
-            <class name="testPOM.LoginTest"/>
-        </classes>
-    </test>
-    <test name="Product suite POM">
-        <classes>
-            <class name="testPOM.ProductTest"/>
-        </classes>
-    </test>
+
 </suite>
