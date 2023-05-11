@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="2" verbose="1" name="QAAutomation2023"
+       annotations="JDK" parallel="tests">
+
+    <test name="LoginSuite">
+        <classes>
+            <class name="com.saucedemo.ProductTest"/>
+        </classes>
+    </test>
+
+</suite>

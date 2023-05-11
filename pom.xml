@@ -26,6 +26,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>./src/test/suites/loginTestSuite.xml</suiteXmlFile>
+                        <suiteXmlFile>/src/test/suites/productTestSuite.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
